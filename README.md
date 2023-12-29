@@ -1,2 +1,2 @@
 # investing-terminal
-ols buy-sell
+old buy-sell
