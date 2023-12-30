@@ -1,0 +1,16 @@
+@import url('./variables.scss');
+@import url('./fonts.scss');
+@import '~mixins';
+
+html {
+  body {
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: 400;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  @include custom-scroll;
+}

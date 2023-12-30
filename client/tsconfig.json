@@ -1,26 +1,28 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "useDefineForClassFields": true,
-    "allowJs": false,
-    "skipLibCheck": true,
+    "outDir": "./build",
+    "target": "ES2022",
+    "module": "ES2022",
+    "jsx": "react-jsx", 
+    "noImplicitAny": true,
+    "allowJs": true,
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ES2020",
-    "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
     "paths": {
       "~app": ["src/app"],
       "~app/*": ["src/app/*"],
 
+      "~shared": ["src/shared"],
+      "~shared/*": ["src/shared/*"],
+
+      "~mixins": ["src/shared/scss/mixins"],
     }
   },
-  "include": ["src"],
+  "include": ["src", "types/declaration.d.ts", "types/global.d.ts"],
   "exclude": ["node_modules", "build"],
 }
