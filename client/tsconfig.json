@@ -3,13 +3,14 @@
     "outDir": "./build",
     "target": "ES2022",
     "module": "ES2022",
-    "jsx": "react-jsx", 
+    "jsx": "react-jsx",
     "noImplicitAny": true,
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
@@ -17,12 +18,23 @@
       "~app": ["src/app"],
       "~app/*": ["src/app/*"],
 
+      "~widgets": ["src/widgets"],
+      "~widgets/*": ["src/widgets/*"],
+
       "~shared": ["src/shared"],
       "~shared/*": ["src/shared/*"],
 
-      "~mixins": ["src/shared/scss/mixins"],
-    }
+      "~mixins": ["src/shared/scss/mixins"]
+    },
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "camelCase"
+        }
+      }
+    ]
   },
   "include": ["src", "types/declaration.d.ts", "types/global.d.ts"],
-  "exclude": ["node_modules", "build"],
+  "exclude": ["node_modules", "build"]
 }
