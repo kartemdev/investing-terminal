@@ -1,13 +1,14 @@
 import styles from './index.module.scss';
 
 interface Props {
+  headerSlot: React.ReactNode;
   children: React.ReactNode;
 }
 
-const Layout: React.FC<Props> = ({ children }) => {
+const Layout: React.FC<Props> = ({ headerSlot, children }) => {
   return (
     <div className={styles.layout}>
-      <header className={styles.layoutHeader}></header>
+      <header className={styles.layoutHeader}>{headerSlot}</header>
       <div className={styles.layoutContent}>{children}</div>
     </div>
   );
