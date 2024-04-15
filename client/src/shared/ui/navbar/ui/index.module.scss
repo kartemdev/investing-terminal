@@ -1,16 +1,16 @@
-.it-navbar {
-  flex-direction: column;
-  gap: 50px;
-  font-size: 5vw;
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-shadow: 0px 0px 30px -6px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-gray-lighter);
 
-  &, &__block {
+  .navbar {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  &__block {
-    height: 100%;
-    background-color: var(--secondary);
+    flex-direction: column;
+    gap: 50px;
   }
 }

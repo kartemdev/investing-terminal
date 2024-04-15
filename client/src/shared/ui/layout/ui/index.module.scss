@@ -1,15 +1,15 @@
-.layout {
+.block {
   position: relative;
+}
 
-  &__header {
-    position: fixed;
-    width: 25%;
-    height: 100lvh;
-  }
+.header {
+  position: fixed;
+  width: 25%;
+  height: 100lvh;
+}
 
-  &__content {
-    position: relative;
-    width: 75%;
-    left: 25%;
-  }
+.content {
+  position: relative;
+  width: 75%;
+  left: 25%;
 }

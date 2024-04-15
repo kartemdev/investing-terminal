@@ -19,13 +19,13 @@ const NavbarLink: React.FC<Props> = (props) => {
     <HashLink
       to={to}
       smooth
-      className={classNames(styles.itNavbarLinkBlock, {
+      className={classNames(styles.block, {
         [className]: className,
       })}
     >
       <span
-        className={classNames(styles.itNavbarLink, {
-          [styles.itNavbarLinkActive]: location.hash === to,
+        className={classNames(styles.link, {
+          [styles.active]: location.hash === to,
         })}
         data-text={children}
       >
