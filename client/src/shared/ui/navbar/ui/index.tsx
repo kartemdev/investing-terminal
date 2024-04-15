@@ -6,8 +6,8 @@ interface Props {
 
 const Navbar: React.FC<Props> = ({ children }) => {
   return (
-    <div className={styles.itNavbarBlock}>
-      <div className={styles.itNavbar}>{children}</div>
+    <div className={styles.block}>
+      <div className={styles.navbar}>{children}</div>
     </div>
   );
 };

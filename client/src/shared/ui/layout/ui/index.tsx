@@ -7,9 +7,9 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ headerSlot, children }) => {
   return (
-    <div className={styles.layout}>
-      <header className={styles.layoutHeader}>{headerSlot}</header>
-      <div className={styles.layoutContent}>{children}</div>
+    <div className={styles.block}>
+      <header className={styles.header}>{headerSlot}</header>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 };
