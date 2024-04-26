@@ -1,0 +1,2 @@
+export const INPUT_NUMBER_DECIMAL_SEPARATOR = '.';
+export const INPUT_NUMBER_THOUSANDS_SEPARATOR = ' ';

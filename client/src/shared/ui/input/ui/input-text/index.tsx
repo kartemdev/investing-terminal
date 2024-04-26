@@ -1,28 +1,29 @@
-import { UseFormRegisterReturn } from 'react-hook-form';
+import withInput, { BaseProps } from '../with-input';
 
-import withInput from '../with-input';
+import styles from '../index.module.scss';
 
-import styles from '../styles.module.scss';
-
-interface IProps {
-  name: string;
+interface Props extends BaseProps {
+  name?: string;
+  isDisabled?: boolean;
   type?: 'email' | 'text';
-  value?: string;
-  disabled?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  registerProps?: UseFormRegisterReturn<string> | null;
 }
 
-const InputText: React.FC<IProps> = ({ registerProps, ...props }) => {
-  const { name, type, value, disabled, onChange } = props;
+const InputText: React.FC<Props> = ({ registerProps, ...props }) => {
+  const {
+    value,
+    onChange,
+    name = '',
+    type = 'email',
+    isDisabled = false,
+  } = props;
 
   return (
     <input
       name={name}
       type={type}
       value={value}
-      disabled={disabled}
       onChange={onChange}
+      disabled={isDisabled}
       className={styles.input}
       {...registerProps}
     />

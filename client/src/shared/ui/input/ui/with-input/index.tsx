@@ -1,37 +1,28 @@
 import { memo, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
-import classNames from 'classnames';
 
-import styles from '../styles.module.scss';
+import styles from '../index.module.scss';
 
-interface IInputProps {
-  name?: string;
+export interface BaseProps {
   value?: string;
-  disabled?: boolean;
-  type?: 'email' | 'text';
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  registerProps?: UseFormRegisterReturn<string> | null;
-}
-
-interface IProps extends IInputProps {
   label?: string;
   error?: string;
-  className?: string;
   leftAddon?: React.ReactNode;
   rightAddon?: React.ReactNode;
+  registerProps?: UseFormRegisterReturn | null;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const withInput = (Component: React.ComponentType<IProps>) => {
-  const InputElement: React.FC<IProps> = (props) => {
+const withInput = <T extends BaseProps>(Component: React.ComponentType<T>) => {
+  const InputElement: React.FC<T> = (props) => {
     const {
       value,
-      onChange,
-      registerProps,
-      label,
-      error,
-      className,
-      rightAddon,
-      leftAddon,
+      error = '',
+      label = '',
+      onChange = null,
+      leftAddon = null,
+      rightAddon = null,
+      registerProps = null,
     } = props;
 
     const [selfValue, setSelfValue] = useState<string>('');
@@ -49,11 +40,7 @@ const withInput = (Component: React.ComponentType<IProps>) => {
     };
 
     return (
-      <div
-        className={classNames(styles.block, {
-          [className]: className,
-        })}
-      >
+      <div className={styles.block}>
         {leftAddon && <span className={styles.leftAddon}>{leftAddon}</span>}
         {label && <span className={styles.label}>{label}</span>}
         <Component
@@ -65,17 +52,6 @@ const withInput = (Component: React.ComponentType<IProps>) => {
         {error && <div className={styles.error}>{error}</div>}
       </div>
     );
-  };
-
-  InputElement.defaultProps = {
-    type: 'text',
-    label: '',
-    error: '',
-    onChange: null,
-    registerProps: null,
-    disabled: false,
-    leftAddon: null,
-    rightAddon: null,
   };
 
   return memo(InputElement);

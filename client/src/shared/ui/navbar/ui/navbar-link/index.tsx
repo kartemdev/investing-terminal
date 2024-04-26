@@ -6,12 +6,12 @@ import styles from './index.module.scss';
 
 interface Props {
   to: string;
-  className?: string;
   children?: string;
+  className?: string;
 }
 
 const NavbarLink: React.FC<Props> = (props) => {
-  const { to, className, children } = props;
+  const { to, children = null, className = '' } = props;
 
   const location = useLocation();
 
@@ -33,11 +33,6 @@ const NavbarLink: React.FC<Props> = (props) => {
       </span>
     </HashLink>
   );
-};
-
-NavbarLink.defaultProps = {
-  className: '',
-  children: '',
 };
 
 export default NavbarLink;
