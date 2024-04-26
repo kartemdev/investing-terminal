@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Input, Layout, Navbar, NavbarLink } from '~shared/ui';
+import { Button, Input, Layout, Navbar, NavbarLink } from '~shared/ui';
 
 import '~shared/scss/index.scss';
 
@@ -30,6 +29,7 @@ const Header = () => (
   <Navbar>
     <NavbarLink to='#input-text'>Input.Text</NavbarLink>
     <NavbarLink to='#input-number'>Input.Number</NavbarLink>
+    <NavbarLink to='#button'>Button</NavbarLink>
   </Navbar>
 );
 
@@ -37,10 +37,19 @@ root.render(
   <BrowserRouter>
     <Layout headerSlot={<Header />}>
       <Div id='input-text'>
-        <Input.Text name='fdf' />
+        <Input.Text name='dad' />
       </Div>
       <Div id='input-number'>
-        <Input.Number label='Amount' name='fdf' leftAddon={'\uFF04'} />
+        <Input.Number
+          label='Amount'
+          name='amount'
+          leftAddon='$'
+          isFixedDecimalScale
+          decimalScale={2}
+        />
+      </Div>
+      <Div id='button'>
+        <Button>Click me!</Button>
       </Div>
     </Layout>
   </BrowserRouter>,

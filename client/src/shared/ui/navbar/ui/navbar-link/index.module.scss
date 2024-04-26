@@ -8,8 +8,8 @@
     top: 100%;
     width: 0%;
     height: 2px;
-    background-color: var(--color-primary);
-    transition: 0.4s;
+    background-color: var(--color-primary-light);
+    transition: all 0.4s;
   }
 
   &:hover {
@@ -21,6 +21,7 @@
   &:has(.active) {
     &::before {
       width: 100%;
+      background-color: var(--color-primary);
     }
   }
 }
@@ -34,5 +35,5 @@
 }
 
 .active {
-  color: var(--color-primary-light);
+  color: var(--color-primary);
 }

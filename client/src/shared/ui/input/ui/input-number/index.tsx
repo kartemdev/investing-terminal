@@ -1,29 +1,58 @@
-import { UseFormRegisterReturn } from 'react-hook-form';
+import { forwardRef } from 'react';
+import { NumericFormat } from 'react-number-format';
 
-import withInput from '../with-input';
+import {
+  INPUT_NUMBER_DECIMAL_SEPARATOR,
+  INPUT_NUMBER_THOUSANDS_SEPARATOR,
+} from '../../lib';
+import withInput, { BaseProps } from '../with-input';
 
-import styles from '../styles.module.scss';
+import styles from '../index.module.scss';
 
-interface IProps {
-  name: string;
-  value?: string;
-  disabled?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  registerProps?: UseFormRegisterReturn<string> | null;
+interface InputNumberProps {
+  decimalScale?: number;
+  isFixedDecimalScale?: true;
+}
+interface Props extends BaseProps {
+  name?: string;
+  isDisabled?: boolean;
 }
 
-const InputNumber: React.FC<IProps> = ({ registerProps, ...props }) => {
-  const { name, value, disabled, onChange } = props;
+const Input: React.FC<Props> = forwardRef(
+  (props, ref: React.Ref<HTMLInputElement>) => <input ref={ref} {...props} />,
+);
+
+const InputNumber: React.FC<Props & InputNumberProps> = ({
+  registerProps,
+  ...props
+}) => {
+  const {
+    value,
+    onChange,
+    name = '',
+    isDisabled = false,
+    decimalScale = null,
+    isFixedDecimalScale = false,
+  } = props;
+
+  const currentRegisterProps = { ...registerProps };
+
+  delete currentRegisterProps.ref;
 
   return (
-    <input
+    <NumericFormat
       name={name}
-      type='number'
       value={value}
-      disabled={disabled}
       onChange={onChange}
+      disabled={isDisabled}
       className={styles.input}
-      {...registerProps}
+      customInput={Input}
+      decimalScale={decimalScale}
+      getInputRef={registerProps?.ref}
+      fixedDecimalScale={isFixedDecimalScale}
+      decimalSeparator={INPUT_NUMBER_DECIMAL_SEPARATOR}
+      thousandSeparator={INPUT_NUMBER_THOUSANDS_SEPARATOR}
+      {...currentRegisterProps}
     />
   );
 };
