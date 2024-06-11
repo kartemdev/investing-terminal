@@ -1,0 +1,14 @@
+.cell {
+  border: 2px solid var(--color-gray-dark);
+  padding: 10px 15px;
+
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    user-select: none;
+  }
+}

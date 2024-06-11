@@ -1,0 +1,15 @@
+.block {
+  max-width: max-content;
+  border: 2px solid var(--color-gray-dark);
+
+  &,
+  .table {
+    border-radius: 4px;
+  }
+
+  .table {
+    border-collapse: collapse;
+    border-style: hidden;
+    background-color: var(--color-background);
+  }
+}
