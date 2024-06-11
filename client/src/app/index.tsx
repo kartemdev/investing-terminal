@@ -1,7 +1,8 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { createColumnHelper } from '@tanstack/react-table';
 
-import { Button, Input, Layout, Navbar, NavbarLink } from '~shared/ui';
+import { Button, Input, Layout, Navbar, NavbarLink, Table } from '~shared/ui';
 
 import '~shared/scss/index.scss';
 
@@ -30,14 +31,54 @@ const Header = () => (
     <NavbarLink to='#input-text'>Input.Text</NavbarLink>
     <NavbarLink to='#input-number'>Input.Number</NavbarLink>
     <NavbarLink to='#button'>Button</NavbarLink>
+    <NavbarLink to='#table'>Table</NavbarLink>
   </Navbar>
 );
+
+const tableData = [
+  {
+    email: 'arisha@milaya.ru',
+    address: 'raduga street',
+    age: 0.7,
+  },
+  {
+    email: 'julia@love.ru',
+    address: 'love street',
+    age: 21,
+  },
+  {
+    email: 'artyom@strong.ru',
+    address: 'fast street',
+    age: 22,
+  },
+];
+
+interface TableData {
+  age: number;
+  email: string;
+  address: string;
+}
+
+const getColumns = () => {
+  const columnHelper = createColumnHelper<TableData>();
+  return [
+    columnHelper.accessor('address', {
+      header: 'Адрес',
+    }),
+    columnHelper.accessor('email', {
+      header: 'Почта',
+    }),
+    columnHelper.accessor('age', {
+      header: 'Возраст',
+    }),
+  ];
+};
 
 root.render(
   <BrowserRouter>
     <Layout headerSlot={<Header />}>
       <Div id='input-text'>
-        <Input.Text name='dad' />
+        <Input.Text label='Just text' name='dad' />
       </Div>
       <Div id='input-number'>
         <Input.Number
@@ -50,6 +91,9 @@ root.render(
       </Div>
       <Div id='button'>
         <Button>Click me!</Button>
+      </Div>
+      <Div id='table'>
+        <Table data={tableData} columns={getColumns()} />
       </Div>
     </Layout>
   </BrowserRouter>,
